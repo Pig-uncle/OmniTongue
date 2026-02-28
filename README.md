@@ -17,7 +17,7 @@ The dataset exhibits a natural long-tailed distribution mirroring authentic clin
 
 Data files are located in the `data/` directory:
 * `images/`: Contains 1,351 anonymized, high-resolution tongue images.
-* `annotations/omnitongue_vqa.json`: The structured VQA pairs containing the programmatic mapping of the 16 clinical dimensions into natural language questions and answers.
+* `qa.jsonl`: The structured VQA pairs containing the programmatic mapping of the 16 clinical dimensions into natural language questions and answers.
 
 ## ⚙️ Environment Setup
 To reproduce the evaluation pipeline, set up the following environment:
