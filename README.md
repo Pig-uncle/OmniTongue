@@ -1,35 +1,28 @@
-# 👅 OmniTongue: A Multimodal Large Language Model for Comprehensive Tongue Diagnosis
+# OmniTongue: A Comprehensive MLLM Benchmark for Automated Tongue Diagnosis in Traditional Chinese Medicine
 
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
-[![Python 3.9+](https://img.shields.io/badge/python-3.9+-green.svg)](https://www.python.org/downloads/)
-[![MICCAI 2026](https://img.shields.io/badge/Paper-MICCAI%202026-orange.svg)](#)
+**Anonymous Repository for MICCAI Double-Blind Review**
 
-**OmniTongue** 是一个专为舌象诊断设计的多模态大模型框架。它结合了先进的视觉-语言模型 (VLM) 与深度中医 (TCM) 医学知识，旨在通过多维度特征提取和检索增强生成 (RAG) 技术，实现精准、可解释的自动舌诊分析。
+## 📖 Introduction
+This repository contains the dataset and evaluation codebase for **OmniTongue**, the first comprehensive and fine-grained Visual Question Answering (VQA) benchmark specifically designed for Traditional Chinese Medicine (TCM) tongue diagnosis. 
 
----
+Existing datasets are often limited by single dimensions and coarse granularity, which obscures critical pathological information. To bridge this gap, OmniTongue integrates 1,351 expert-validated high-definition images and 21,616 multiple-choice instruction pairs. 
 
-## ✨ 核心特性
+### Core Features
+* **Multidimensional Evaluation**: Dense supervision across 16 clinical dimensions, including Tongue Body (color, size, shape, teeth marks, cracks, petechiae) and Tongue Coating (color, thickness, distribution, texture).
+* **Anatomical Grounding**: Region-level supervision mapping to distinct anatomical zones: Tip (Heart/Lung), Middle (Spleen/Stomach), and Root (Kidney).
+* **Fine-Grained Granularity**: 66 distinct diagnostic labels to enforce precise pathological representation learning.
 
-* **🏆 权威数据集支持：** 基于 **Tongue-1K** 数据集构建，包含 1,351 张经过专家严格标注的高质量舌象图像。
-* **👁️ 多模态理解：** 不仅能识别颜色、苔质、齿痕等视觉特征，还能结合患者主诉进行综合推理。
-* **🔍 检索增强生成 (RAG)：** 集成医学知识库，通过 RAG 技术显著降低模型幻觉，提供有据可依的诊断建议。
-* **📊 综合基准测试：** 针对舌象分类、分割及描述生成任务建立了完整的 Benchmark 体系。
-* **🛠️ 易于扩展：** 模块化设计，支持快速适配不同的多模态底座（如 LLaVA, Qwen-VL 等）。
+## 📊 Dataset Structure
+The dataset exhibits a natural long-tailed distribution mirroring authentic clinical scenarios, challenging models to recognize minority-class local lesions rather than exploiting global statistical shortcuts.
 
----
+Data files are located in the `data/` directory:
+* `images/`: Contains 1,351 anonymized, high-resolution tongue images.
+* `annotations/omnitongue_vqa.json`: The structured VQA pairs containing the programmatic mapping of the 16 clinical dimensions into natural language questions and answers.
 
-## 📅 更新日志
+## ⚙️ Environment Setup
+To reproduce the evaluation pipeline, set up the following environment:
 
-- **[2026-06]** 发布 OmniTongue 源代码与预训练模型权重。
-- **[2026-02]** 提交至 **MICCAI 2026**。
-- **[2026-01]** 完成 **Tongue-1K** 数据集标注与整理。
-
----
-
-## 🚀 快速开始
-
-### 1. 环境准备
 ```bash
-git clone [https://github.com/YourUsername/OmniTongue.git](https://github.com/YourUsername/OmniTongue.git)
-cd OmniTongue
+conda create -n omnitongue python=3.10
+conda activate omnitongue
 pip install -r requirements.txt
